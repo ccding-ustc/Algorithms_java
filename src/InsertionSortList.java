@@ -1,4 +1,13 @@
 
+/**
+ * @ClassName: InsertionSortList
+ *
+ * @Description: TODO Sort a linked list using insertion sort.
+ *
+ * @author: ccding
+ * @date: 2016年9月28日 上午9:12:45
+ */
+
 public class InsertionSortList {
 	public ListNode insertionSortList(ListNode head) {
 		if(head == null || head.next == null)
