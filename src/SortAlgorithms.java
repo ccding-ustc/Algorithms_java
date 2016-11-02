@@ -3,7 +3,8 @@
  * @ClassName: SortAlgorithms
  *
  * @Description: 常见的排序算法 java 实现
- *
+ * void bubbleSort(T[]) 冒泡排序
+ * void insertSort(T[]) 插入排序
  * @author: ccding
  * @date: 2016年10月26日 上午10:50:55
  *
@@ -20,6 +21,19 @@ public class SortAlgorithms <T extends Comparable<T>> {
 					nums[i] = tmp;
 				}
 			}
+		}
+	}
+	
+	public void insertSort(T[] nums){
+		T tmp;
+		for(int i=1; i<nums.length; i++){
+			tmp = nums[i];
+			int j = i-1;
+			while(j>=0 && tmp.compareTo(nums[j]) < 0){
+				nums[j+1] = nums[j];
+				j--;
+			}
+			nums[j+1] = tmp;
 		}
 	}
 	
