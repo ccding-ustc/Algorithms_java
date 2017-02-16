@@ -1,17 +1,17 @@
-#Leetcode Problems Solved by Java.
+#Leetcode Problems Solved by ccding.
 [TOC]
 
-## Leetcode Problem 451:
+## Problem 451:
 Given a string, sort it in decreasing order based on the frequency of characters.
 
 [./src/SortCharactersByFrequency.java](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/SortCharactersByFrequency.java)
 
-## Leetcode Problem 108:Convert Sorted Array to Binary Search Tree
+## Problem 108:Convert Sorted Array to Binary Search Tree
 Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
 
 [./src/ConvertSortedArrToBST.java](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/ConvertSortedArrToBST.java)
 
-## Leetcode Problem 378: Kth Smallest Element in a Sorted Matrix
+##  Problem 378: Kth Smallest Element in a Sorted Matrix
 Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.
 Note that it is the kth smallest element in the sorted order, not the kth distinct element.
 example:
@@ -36,7 +36,20 @@ Leetcode problems implemented by Java.
 	 * 
 	 * @param nums 
 	 * @return
-	 * @author ccding
 	 */
-	public int findMin(int[] nums);
+	public int findMin(int[] nums){
+		int i = 0;
+		int j = nums.length-1;
+		while(i<j){
+			if(nums[i]<nums[j])
+				return nums[i];
+			int mid = (i+j)>>1;
+			if(nums[mid] >= nums[i])
+				i = mid+1;
+			else{
+				j = mid;
+			}
+		}
+		return nums[i];	
+	}
 
