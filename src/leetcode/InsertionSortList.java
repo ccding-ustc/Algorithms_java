@@ -1,4 +1,4 @@
-
+package leetcode;
 /**
  * @ClassName: InsertionSortList
  *

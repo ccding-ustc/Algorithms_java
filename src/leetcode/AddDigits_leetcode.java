@@ -1,3 +1,4 @@
+package leetcode;
 
 public class AddDigits_leetcode {
 	public static int addDigits(int num){

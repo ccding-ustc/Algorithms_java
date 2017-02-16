@@ -1,3 +1,4 @@
+package leetcode;
 
 public class ReverseString_leetcode {
 	public static String reverseString(String s){
