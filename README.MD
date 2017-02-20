@@ -4,12 +4,12 @@
 ## Problem 451:
 Given a string, sort it in decreasing order based on the frequency of characters.
 
-[./src/SortCharactersByFrequency.java](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/SortCharactersByFrequency.java)
+[./src/SortCharactersByFrequency.java](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/SortCharactersByFrequency.java)
 
 ## Problem 108:Convert Sorted Array to Binary Search Tree
 Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
 
-[./src/ConvertSortedArrToBST.java](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/ConvertSortedArrToBST.java)
+[./src/ConvertSortedArrToBST.java](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/ConvertSortedArrToBST.java)
 
 ##  Problem 378: Kth Smallest Element in a Sorted Matrix
 Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.
@@ -23,7 +23,7 @@ matrix = [
 k = 8,
 return 13.
 
-[./src/KthSmallestElementInSortedMat.java](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/KthSmallestElementInSortedMat.java)
+[./src/KthSmallestElementInSortedMat.java](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/KthSmallestElementInSortedMat.java)
 
 #[./src/SolutionLeetcode.java](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/SolutionLeetcode.java)
 Leetcode solutions implemented by Java.
@@ -113,5 +113,32 @@ Leetcode solutions implemented by Java.
 			}
 		}
 		return i;
+	}
+	
+## Problem 109. Convert sorted list to binary search tree.	
+	/**
+	 * Problem 109. Convert sorted list to binary search tree.
+	 * Given a singly linked list where elements are sorted in ascending order,
+	 * convert it to a height balanced BST.
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public TreeNode sortedListToBST(ListNode head){
+		if(head == null)
+			return null;
+		if(head.next == null)
+			return new TreeNode(head.val);
+		ListNode slow = head;
+		ListNode fast = head.next.next;
+		while(fast!=null && fast.next!=null){
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		TreeNode treeNode = new TreeNode(slow.next.val);
+		treeNode.right = sortedListToBST(slow.next.next);
+		slow.next = null;
+		treeNode.left = sortedListToBST(head);
+		return treeNode;
 	}
 

@@ -1,5 +1,7 @@
 package leetcode;
 
+import utils.ListNode;
+
 public class MergeTwoSortedList {
 	 public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 		 if(l1 == null)

@@ -1,3 +1,8 @@
+import com.sun.org.apache.xalan.internal.xsltc.runtime.Node;
+
+import utils.ListNode;
+import utils.TreeNode;
+
 /**
  * 
  * @ClassName: SolutionLeetcode
@@ -9,6 +14,7 @@
  *
  */
 public class SolutionLeetcode {
+	
 	/**
 	 * Problem 153. Find minimum in rotated sorted array.
 	 * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
@@ -34,6 +40,7 @@ public class SolutionLeetcode {
 		}
 		return nums[i];	
 	}
+	
 	/**
 	 * Problem 504. Base 7
 	 * Given an integer, return its base 7 string representation.
@@ -52,7 +59,6 @@ public class SolutionLeetcode {
 		}
 		return isNeg ? "-"+s : s;
 	}
-	
 	public String convertToBase7_2(int num){
 		return Integer.toString(num, 7);
 	}
@@ -88,7 +94,6 @@ public class SolutionLeetcode {
 		}
 		return i+1;
 	}
-	
 	public int removeDuplicates2(int[] nums){
 		int i = 0;
 		for(int n:nums){
@@ -99,10 +104,40 @@ public class SolutionLeetcode {
 		return i;
 	}
 	
+	/**
+	 * Problem 109. Convert sorted list to binary search tree.
+	 * Given a singly linked list where elements are sorted in ascending order,
+	 * convert it to a height balanced BST.
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public TreeNode sortedListToBST(ListNode head){
+		if(head == null)
+			return null;
+		if(head.next == null)
+			return new TreeNode(head.val);
+		ListNode slow = head;
+		ListNode fast = head.next.next;
+		while(fast!=null && fast.next!=null){
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		TreeNode treeNode = new TreeNode(slow.next.val);
+		treeNode.right = sortedListToBST(slow.next.next);
+		slow.next = null;
+		treeNode.left = sortedListToBST(head);
+		return treeNode;
+	}
 	
 	public static void main(String[] args){
 		SolutionLeetcode solution = new SolutionLeetcode();
-		System.out.println(solution.removeDuplicates2(new int[]{1,1,1,2,2,3}));
+		ListNode node = new ListNode(1);
+		node.next = new ListNode(3);
+//		node.next.next = new ListNode(3);
+//		node.next.next.next = new ListNode(4);
+//		node.next.next.next.next = new ListNode(5);
+		System.out.println(solution.sortedListToBST(node));
 	}
 	
 }
