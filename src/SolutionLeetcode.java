@@ -1,4 +1,11 @@
-import com.sun.org.apache.xalan.internal.xsltc.runtime.Node;
+import java.util.Formatter;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.sun.scenario.effect.Merge;
+import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
 
 import utils.ListNode;
 import utils.TreeNode;
@@ -130,14 +137,102 @@ public class SolutionLeetcode {
 		return treeNode;
 	}
 	
+	/**
+	 * Problem 82. Remove duplicates from sorted list II
+	 * Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
+	 * For example,
+	 * Given 1->2->3->3->4->4->5, return 1->2->5.
+	 * Given 1->1->1->2->3, return 2->3.
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public ListNode deleteDuplicatesII(ListNode head){
+		if(head == null)
+			return null;
+		ListNode slow = new ListNode(0);
+		ListNode dummy = slow;
+		slow.next = head;
+		ListNode fast = slow;
+		while(fast != null){
+			while(fast.next!=null && fast.val == fast.next.val){
+				fast = fast.next;
+			}
+			if(slow.next == fast){
+				slow = slow.next;
+				fast = fast.next;
+			}else{
+				slow.next = fast.next;
+				fast = fast.next;
+			}
+		}
+		return dummy.next;
+	}
+
+	/**
+	 * Problem 148. Sort List
+	 * Sort a linked list in O(n logn) time using constant space complexity.
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public ListNode sortList(ListNode head){
+		if(head == null || head.next == null)
+			return head;
+		ListNode slow = head;
+		ListNode fast = head.next;
+		while(fast != null && fast.next != null){
+			fast = fast.next.next;
+			slow = slow.next;
+		}
+		ListNode second = slow.next;
+		slow.next = null;
+		head = mergeTwoList(sortList(head), sortList(second));
+		return head;
+	}
+	private ListNode mergeTwoList(ListNode list1, ListNode list2){
+		ListNode dummy = new ListNode(0), merge = dummy;
+		while(list1 != null && list2 != null){
+			if(list1.val <= list2.val){
+				merge.next = list1;
+				merge = merge.next;
+				list1 = list1.next;
+			}else{
+				merge.next = list2;
+				merge = merge.next;
+				list2 = list2.next;
+			}
+		}
+		if(list1 != null)
+			merge.next = list1;
+		if(list2 != null)
+			merge.next = list2;
+		return dummy.next;
+	}
+	
+	
+	
+	
+	static final int staticFinal = 47;
+	static {
+		System.out.println("static ");
+	}
 	public static void main(String[] args){
 		SolutionLeetcode solution = new SolutionLeetcode();
 		ListNode node = new ListNode(1);
-		node.next = new ListNode(3);
-//		node.next.next = new ListNode(3);
-//		node.next.next.next = new ListNode(4);
-//		node.next.next.next.next = new ListNode(5);
-		System.out.println(solution.sortedListToBST(node));
+		node.next = new ListNode(5);
+		node.next.next = new ListNode(2);
+		node.next.next.next = new ListNode(3);
+		node.next.next.next.next = new ListNode(3);
+		System.out.println(solution.sortList(node));
+//		Matcher m = Pattern.compile("abc").matcher("abc abc gh d h");
+//		m.reset("nshhabcdhasggs");
+//		Formatter f = new Formatter(System.err);
+//		Scanner scanner = new Scanner("aaaa");
+//		while(m.find())
+//			f.format(m.group()+"  "+m.start()+"-%d\n", m.end()-1);
+//		Class leetcodeSolution = SolutionLeetcode.class;
+//		System.out.println(SolutionLeetcode.staticFinal);
 	}
 	
 }
