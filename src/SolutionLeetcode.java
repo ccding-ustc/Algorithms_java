@@ -1,11 +1,4 @@
-import java.util.Formatter;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import com.sun.scenario.effect.Merge;
-import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
 
 import utils.ListNode;
 import utils.TreeNode;
@@ -210,13 +203,62 @@ public class SolutionLeetcode {
 		return dummy.next;
 	}
 	
-	
-	
-	
-	static final int staticFinal = 47;
-	static {
-		System.out.println("static ");
+	/**
+	 * Problem 7. Reverse integer
+	 * Reverse digits of an integer.
+	 * 
+	 * @param x
+	 * @return
+	 */
+	public int reverse(int x){
+		int r = 0;
+		while(x != 0){
+			int tmp = r*10 +x%10;
+			if(tmp/10 != r)
+				return 0;
+			r = tmp;
+			x = x/10;
+		}
+		return r;	
 	}
+	
+	/**
+	 * Problem 461. Hamming distance
+	 * The Hamming distance between two integers is the number od positions at which the corresponding bits are different.
+	 * Given two integers x and y, calculate the Hamming distance.
+	 * Note: 0 <= x,y <= 2^31
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public int hamingDistance(int x, int y){
+		return Integer.bitCount(x^y);
+	}
+	
+	/**
+	 * Problem 477. Total Hamming distance
+	 * The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+	 * Now your job is to find the total Hamming distance between all pairs of the given numbers.
+	 * 
+	 * @param nums
+	 * @return
+	 */
+	public int totalHammingDistance(int[] nums){
+		int n = 31;
+		int len = nums.length;
+		int[] countOnes = new int[n];
+		for(int i=0; i<len; i++){
+			for(int j=0; j<n; j++)
+			countOnes[j] += (nums[i]>>j) & 1;
+		}
+		int sum = 0;
+		for(int countOne: countOnes){
+			sum += countOne * (len - countOne);
+		}
+		return sum;
+	}
+	
 	public static void main(String[] args){
 		SolutionLeetcode solution = new SolutionLeetcode();
 		ListNode node = new ListNode(1);
@@ -224,15 +266,7 @@ public class SolutionLeetcode {
 		node.next.next = new ListNode(2);
 		node.next.next.next = new ListNode(3);
 		node.next.next.next.next = new ListNode(3);
-		System.out.println(solution.sortList(node));
-//		Matcher m = Pattern.compile("abc").matcher("abc abc gh d h");
-//		m.reset("nshhabcdhasggs");
-//		Formatter f = new Formatter(System.err);
-//		Scanner scanner = new Scanner("aaaa");
-//		while(m.find())
-//			f.format(m.group()+"  "+m.start()+"-%d\n", m.end()-1);
-//		Class leetcodeSolution = SolutionLeetcode.class;
-//		System.out.println(SolutionLeetcode.staticFinal);
+		System.out.println(solution.totalHammingDistance(new int[]{4, 2, 14}));
 	}
 	
 }

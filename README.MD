@@ -174,4 +174,24 @@ Leetcode solutions implemented by Java.
 		}
 		return dummy.next;
 	}
+	
+## Problem 7. Reverse integer
+	/**
+	 * Problem 7. Reverse integer
+	 * Reverse digits of an integer.
+	 * 
+	 * @param x
+	 * @return
+	 */
+	public int reverse(int x){
+		int r = 0;
+		while(x != 0){
+			int tmp = r*10 +x%10;
+			if(tmp/10 != r)
+				return 0;
+			r = tmp;
+			x = x/10;
+		}
+		return r;	
+	}
 
