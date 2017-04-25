@@ -1,4 +1,7 @@
 
+import java.util.HashMap;
+import java.util.Map;
+
 import utils.ListNode;
 import utils.TreeNode;
 
@@ -257,6 +260,84 @@ public class SolutionLeetcode {
 		}
 		return sum;
 	}
+	
+	/**
+	 * Problem 5. Longest Palindromic Substring
+	 * Given a string s, find the longest palindromic substring in s. 
+	 * You may assume that the maximum length of s is 1000.
+	 * Example:
+	 * Input: "babad"
+	 * Output: "bab"
+	 * Note: "aba" is also a valid answer.
+	 * Example:
+	 * Input: "cbbd"
+	 * Output: "bb"
+	 */
+	public String longestPalindrome(String s) {
+        int n = s.length();
+        boolean isPalindrome[][] = new boolean[n][n];
+        int src=0,des=0;
+        int maxlen = 0;
+        for(int i=0; i<n; i++){
+        	int j=i;
+        	while(j>=0){
+        		if(s.charAt(i)==s.charAt(j) && (i-j<2||isPalindrome[j+1][i-1])){
+        			isPalindrome[j][i] = true;
+        			if(maxlen<i-j+1){
+        				maxlen = i-j+1;
+        				src = j;
+        				des = i;
+        			}
+        		}
+        		j--;
+        	}
+        }
+        return s.substring(src, des+1);
+    }
+	/**
+	 * Probelm 12. Integer to Roman
+	 * Given an integer, convert it to a roman numeral.
+	 * Input is guaranteed to be within the range from 1 to 3999.
+	 */
+	public String intToRoman(int n){
+		StringBuffer sb = new StringBuffer();
+		String dics[] = new String[]{"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+		int vals[] = new int[]{1000,900,500,400,100,90,50,40,10,9,5,4,1};
+		for(int i=0; i<vals.length; i++){
+			while(n>=vals[i]){
+				sb.append(dics[i]);
+				n-=vals[i];
+			}
+		}
+		return sb.toString();
+	}
+	/**
+	 * Problem 13. Roman to Integer
+	 * Given a roman numeral, convert it to an integer.
+	 * Input is guaranteed to be within the range from 1 to 3999.
+	 */
+	public int romanToInt(String s){
+		Map<Character, Integer> dics = new HashMap<>();
+		dics.put('I', 1);
+		dics.put('V', 5);
+		dics.put('X', 10);
+		dics.put('L', 50);
+		dics.put('C', 100);
+		dics.put('D', 500);
+		dics.put('M', 1000);
+		int len = s.length();
+		int result = dics.get(s.charAt(len-1));
+		for(int i = len-2; i>=0; i--){
+			if(dics.get(s.charAt(i)) >= dics.get(s.charAt(i+1))){
+				result += dics.get(s.charAt(i));
+			}else{
+				result -= dics.get(s.charAt(i));
+			}
+		}
+		return result;
+	}
+	
+	
 	
 	
 	
