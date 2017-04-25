@@ -2,6 +2,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
+
 import utils.ListNode;
 import utils.TreeNode;
 
@@ -182,27 +183,8 @@ public class SolutionLeetcode {
 		}
 		ListNode second = slow.next;
 		slow.next = null;
-		head = mergeTwoList(sortList(head), sortList(second));
+		head = mergeTwoLists(sortList(head), sortList(second));
 		return head;
-	}
-	private ListNode mergeTwoList(ListNode list1, ListNode list2){
-		ListNode dummy = new ListNode(0), merge = dummy;
-		while(list1 != null && list2 != null){
-			if(list1.val <= list2.val){
-				merge.next = list1;
-				merge = merge.next;
-				list1 = list1.next;
-			}else{
-				merge.next = list2;
-				merge = merge.next;
-				list2 = list2.next;
-			}
-		}
-		if(list1 != null)
-			merge.next = list1;
-		if(list2 != null)
-			merge.next = list2;
-		return dummy.next;
 	}
 	
 	/**
@@ -294,8 +276,9 @@ public class SolutionLeetcode {
         }
         return s.substring(src, des+1);
     }
+	
 	/**
-	 * Probelm 12. Integer to Roman
+	 * Problem 12. Integer to Roman
 	 * Given an integer, convert it to a roman numeral.
 	 * Input is guaranteed to be within the range from 1 to 3999.
 	 */
@@ -311,6 +294,7 @@ public class SolutionLeetcode {
 		}
 		return sb.toString();
 	}
+	
 	/**
 	 * Problem 13. Roman to Integer
 	 * Given a roman numeral, convert it to an integer.
@@ -337,8 +321,137 @@ public class SolutionLeetcode {
 		return result;
 	}
 	
+	/**
+	 * Problem 21. Merge two sorted lists.
+	 * Merge two sorted linked lists and return it as one sorted list. 
+	 * Analyze and describe its complexity.
+	 */
+	 public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+		 if(l1 == null)
+			 return l2;
+		 if(l2 == null)
+			 return l1;
+		 if(l1.val <= l2.val){
+			 l1.next = mergeTwoLists(l1.next, l2);
+			 return l1;
+		 }else{
+			 l2.next = mergeTwoLists(l1, l2.next);
+			 return l2;
+		 }
+	 }
+	 public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
+		 if(l1 == null)
+			 return l2;
+		 if(l2 == null)
+			 return l1;
+		 ListNode res = new ListNode(0);
+		 ListNode l = res;
+		 while(l1!=null && l2!=null){
+			 if(l1.val <= l2.val){
+				 l.next = new ListNode(l1.val);
+				 l1 = l1.next;
+			 }else{
+				 l.next = new ListNode(l2.val);
+				 l2 = l2.next;
+			 }
+			 l = l.next;
+		 }
+		 if(l1 != null){
+			 l.next = l1;
+		 }
+		 if(l2 != null){
+			 l.next = l2;
+		 }
+		 return res.next;
+	 }
 	
+	/**
+	 * Problem 23. Merge K sorted lists.
+	 * Merge k sorted linked lists and return it as one sorted list. 
+	 * Analyze and describe its complexity.
+	 */
+	 public ListNode mergeKLists(ListNode[] lists){
+		 return mergeLists(lists, 0, lists.length-1);
+	 }
+	 private ListNode mergeLists(ListNode[] lists, int s, int t){
+		 if(s==t)
+			 return lists[s];
+		 if(s<t){
+			 int m = s + ((t-s)>>1);
+			 ListNode l1 = mergeLists(lists, s, m);
+			 ListNode l2 = mergeLists(lists, m+1, t);
+			 return mergeTwoLists(l1, l2);
+		 }else{
+			 return null;
+		 }
+	 }
 	
-	
+	 /**
+	  * Problem 33. Search in Rotated Sorted Array
+	  * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+	  * (i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
+	  * You are given a target value to search. If found in the array return its index, otherwise return -1.
+	  * You may assume no duplicate exists in the array.
+	  */
+	 public int search(int[] nums, int target){
+		 int low = 0;
+		 int high = nums.length-1;
+		 while(low < high){
+			 int mid = low+((high-low)>>1);
+			 if(nums[mid]>nums[high])
+				 low = mid+1;
+			 else
+				 high = mid;
+		 }
+		 int rot = low;
+		 int res1 = binarySearch(nums, 0, rot-1, target);
+		 int res2 = binarySearch(nums, rot, nums.length-1, target);
+		 return res1==-1 ? res2:res1;
+	 }
+	 private int  binarySearch(int[] nums, int src, int des, int target){
+		 if(src>des)
+			 return -1;
+		 while(src <= des){
+			 int mid = src + ((des-src)>>1);
+			 if(nums[mid] == target)
+				 return mid;
+			 if(nums[mid] < target){
+				 src = mid+1;
+			 }else{
+				 des = mid-1;
+			 }
+		 }
+		 return -1;
+	 }
+	 
+	 /**
+	  * Problem 6. ZigZag Conversion
+	  * The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+	  * P   A   H   N
+	  * A P L S I I G
+	  * Y   I   R
+	  * And then read line by line: "PAHNAPLSIIGYIR"
+	  * Write the code that will take a string and make this conversion given a number of rows:
+	  * string convert(string text, int nRows);
+	  * convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
+	  */
+	 public String convert(String s, int numRows) {
+		 StringBuilder[] sbs = new StringBuilder[numRows];
+		 int len = s.length();
+		 for(int i=0; i<numRows; i++)
+			 sbs[i] = new StringBuilder();
+		 int idx = 0;
+		 while(idx < len){
+			 for(int i=0; i<numRows&&idx<len; i++){
+				 sbs[i].append(s.charAt(idx++));
+			 }
+			 for(int i=numRows-2; i>=1&&idx<len; i--){
+				 sbs[i].append(s.charAt(idx++));
+			 }
+		 }
+		 for(int i=1; i<numRows; i++)
+			 sbs[0].append(sbs[i]);
+		 return sbs[0].toString();
+	 }
 	
 }
