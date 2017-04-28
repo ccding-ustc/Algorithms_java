@@ -294,6 +294,7 @@ public class SolutionLeetcode {
         }
         return s.substring(src, des+1);
     }
+	
 	/**
 	 * Probelm 12. Integer to Roman
 	 * Given an integer, convert it to a roman numeral.
@@ -311,6 +312,7 @@ public class SolutionLeetcode {
 		}
 		return sb.toString();
 	}
+	
 	/**
 	 * Problem 13. Roman to Integer
 	 * Given a roman numeral, convert it to an integer.
@@ -337,8 +339,36 @@ public class SolutionLeetcode {
 		return result;
 	}
 	
-	
-	
-	
+	/**
+	 * Problem 27. Remove Element
+	 * Given an array and a value, remove all instances of that 
+	 * value in place and return the new length.
+	 * Do not allocate extra space for another array, 
+	 * you must do this in place with constant memory.
+	 * The order of elements can be changed. 
+	 * It doesn't matter what you leave beyond the new length.
+	 */
+	public int removeElement(int[] nums, int val) {
+		int idx = 0;
+        for(int i=0; i<nums.length; i++){
+        	if(nums[i] != val)
+        		nums[idx++] = nums[i];
+        }
+        return idx;
+    }
+
+	/**
+	 * Problem 415. Add Strings
+	 * Given two non-negative integers num1 and num2 represented as string, 
+	 * return the sum of num1 and num2.
+	 * Note:
+	 * The length of both num1 and num2 is < 5100.
+	 * Both num1 and num2 contains only digits 0-9.
+	 * Both num1 and num2 does not contain any leading zero.
+	 * You must not use any built-in BigInteger library or convert the inputs to integer directly.
+	 */
+//	public String addStrings(String num1, String num2){
+//		Integer.parseInt("")
+//	}
 	
 }
