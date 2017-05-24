@@ -454,4 +454,91 @@ public class SolutionLeetcode {
 		 return sbs[0].toString();
 	 }
 	
+	 /**
+	  * Problem 8. String to Integer(atoi)
+	  * Implement atoi to convert a string to an integer.
+	  */
+	 public int myAtoi(String str){
+		 str = str.trim();
+		 if(str.length() == 0)
+			 return 0;
+		 int start = 0;
+		 while(start < str.length() && (str.charAt(start)=='-'||str.charAt(start)=='+'))
+			 start++;
+		 if(start>1)
+			 return 0;
+		 int sign = 1;
+		 if(str.charAt(0)=='-')
+			 sign = -1;
+		 long sum = 0;
+		 for(int i=start; i<str.length(); i++){
+			 if(str.charAt(i)>'9' || str.charAt(i)<'0')
+				 break;
+			 sum = sum*10 + (str.charAt(i)-'0');
+			 if (sign == 1 && sum > Integer.MAX_VALUE)
+					return Integer.MAX_VALUE;
+			 if (sign == -1 && (-1) * sum < Integer.MIN_VALUE)
+					return Integer.MIN_VALUE;
+		 }
+	
+		 return (int)sum * sign;
+	 }
+
+	 /**
+	  * Problem 9. Palindrome Number
+	  * Determine whether an integer is a palindrome. Do this without extra space.
+	  */
+	 public boolean isPalindrome(int x) {
+		 if(x<0)
+			 return false;
+		 int palindrome = 0;
+		 int xbak = x;
+		 while(x >= 10){
+			 palindrome = palindrome*10 + x%10;
+			 x = x/10;
+		 }
+		 return x==xbak%10 && palindrome==xbak/10;
+	 }
+
+	 /**
+	  * Problem 205. Isomorphic Strings
+	  * Given two strings s and t, determine if they are isomorphic.
+	  * Two strings are isomorphic if the characters in s can be replaced to get t.
+	  * All occurrences of a character must be replaced with another character while 
+	  * preserving the order of characters. No two characters may map to the same character
+	  *  but a character may map to itself.
+	  *  For example,
+	  *  Given "egg", "add", return true.
+	  *  Given "foo", "bar", return false.
+	  *  Given "paper", "title", return true.
+	  */
+	 public boolean isIsomorphic(String s, String t){
+		 if(s.length() != t.length())
+			 return false;
+		 int len = s.length();
+		 int[] sTot = new int[256];
+		 int[] tTos = new int[256];
+		 for(int i=0; i<len; i++){
+			 if(sTot[s.charAt(i)] == 0 && tTos[t.charAt(i)] == 0){
+				 sTot[s.charAt(i)] = t.charAt(i);
+				 tTos[t.charAt(i)] = s.charAt(i);
+			 }else{
+				 if(sTot[s.charAt(i)] != t.charAt(i) || tTos[t.charAt(i)] != s.charAt(i))
+					 return false;
+			 }
+		 } 
+		 return true;
+	 }
+
+	 /**
+	  * Problem 76. Minimum Window Substring
+	  * Given a string S and a string T, find the minimum window in S which will
+	  *  contain all the characters in T in complexity O(n).
+	  *  For example,
+	  *  S = "ADOBECODEBANC"  T = "ABC"
+	  *  Minimum window is "BANC".
+	  */
+	 public String minWindow(String s, String t){
+		 
+	 }
 }

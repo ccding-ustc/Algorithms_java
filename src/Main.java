@@ -1,7 +1,5 @@
 
 
-import utils.ListNode;
-
 public class Main {
 
 	public static void main(String[] args){
@@ -13,7 +11,8 @@ public class Main {
 //		node2.next = new ListNode(10);
 //		ListNode[] lists = new ListNode[]{null, node, null, node2};
 //		int nums[] = new int[]{2,2,2,0,2,2};
-		System.out.println(solution.convert("PAYPALISHIRING", 3));
+//		System.out.println(solution.isIsomorphic("title", "paper"));
+
 		
 	}
 
