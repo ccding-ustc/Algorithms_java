@@ -1,5 +1,8 @@
 package DesignPattern;
 /**
+ * 单例模式：确保一个类只有一个实例，并提供一个全局访问点
+ */
+/**
  * 单例模式的简单实现
  * @author ccding
  *
