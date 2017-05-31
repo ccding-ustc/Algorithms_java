@@ -294,6 +294,7 @@ public class SolutionLeetcode {
         }
         return s.substring(src, des+1);
     }
+	
 	/**
 	 * Probelm 12. Integer to Roman
 	 * Given an integer, convert it to a roman numeral.
@@ -311,6 +312,7 @@ public class SolutionLeetcode {
 		}
 		return sb.toString();
 	}
+	
 	/**
 	 * Problem 13. Roman to Integer
 	 * Given a roman numeral, convert it to an integer.
@@ -337,8 +339,167 @@ public class SolutionLeetcode {
 		return result;
 	}
 	
+	/**
+	 * Problem 27. Remove Element
+	 * Given an array and a value, remove all instances of that 
+	 * value in place and return the new length.
+	 * Do not allocate extra space for another array, 
+	 * you must do this in place with constant memory.
+	 * The order of elements can be changed. 
+	 * It doesn't matter what you leave beyond the new length.
+	 */
+	public int removeElement(int[] nums, int val) {
+		int idx = 0;
+        for(int i=0; i<nums.length; i++){
+        	if(nums[i] != val)
+        		nums[idx++] = nums[i];
+        }
+        return idx;
+    }
+
+	/**
+	 * Problem 415. Add Strings
+	 * Given two non-negative integers num1 and num2 represented as string, 
+	 * return the sum of num1 and num2.
+	 * Note:
+	 * The length of both num1 and num2 is < 5100.
+	 * Both num1 and num2 contains only digits 0-9.
+	 * Both num1 and num2 does not contain any leading zero.
+	 * You must not use any built-in BigInteger library or convert the inputs to integer directly.
+	 */
+	public String addStrings(String num1, String num2){
+		int carry = 0;
+		StringBuilder sb = new StringBuilder();
+		for(int i=num1.length()-1, j=num2.length()-1; i>=0||j>=0||carry==1; i--,j--){
+			int n1 = i<0 ? 0 : num1.charAt(i)-'0';
+			int n2 = j<0 ? 0 : num2.charAt(j)-'0';
+			int sum = n1+n2+carry;
+			carry = sum/10;
+			sb.append(sum%10);
+		}
+		return sb.reverse().toString();
+	}
 	
+	/**
+	 * Problem 43. Multiply Strings
+	 * Given two non-negative integers num1 and num2 represented as strings, 
+	 * return the product of num1 and num2.
+	 * Note:
+	 * The length of both num1 and num2 is < 110.
+	 * Both num1 and num2 contains only digits 0-9.
+	 * Both num1 and num2 does not contain any leading zero.
+	 * You must not use any built-in BigInteger library or 
+	 * convert the inputs to integer directly.
+	 */
+	public String multiply(String num1, String num2){
+		int len1 = num1.length();
+		int len2 = num2.length();
+		int[] pos = new int[len1+len2];
+		for(int i=len1-1; i>=0; i--){
+			for(int j=len2-1; j>=0; j--){
+				int mul = (num1.charAt(i)-'0') * (num2.charAt(j)-'0');
+				int p1 = i+j;
+				int p2 = i+j+1;
+				int sum = mul + pos[p2];
+				pos[p1] += sum/10;
+				pos[p2] = sum % 10;
+			}
+		}
+		StringBuilder sb = new StringBuilder();
+		for(int p:pos)
+			if(!(sb.length()==0 && p==0))
+				sb.append(p);
+		return sb.length()==0 ? "0" : sb.toString();
+	}
 	
+	/**
+	 * Problem 541. Reverse String II
+	 * Given a string and an integer k, 
+	 * you need to reverse the first k characters for every 2k 
+	 * characters counting from the start of the string. 
+	 * If there are less than k characters left, 
+	 * reverse all of them. If there are less than 2k but greater than or equal to k characters, 
+	 * then reverse the first k characters and left the other as original.
+	 * Example:
+	 * Input: s = "abcdefg", k = 2
+	 * Output: "bacdfeg"
+	 */
+	public String reverseStr(String s, int k) {
+        if(s==null || s.length()==1)
+        	return s;
+        char[] schs = s.toCharArray();
+        for(int i=0; i<schs.length; i+=2*k){
+        	int src = i;
+        	int des = Math.min(i+k-1, schs.length-1);
+        	while(src < des){
+        		char tmp = schs[src];
+        		schs[src] = schs[des];
+        		schs[des] = tmp;
+        		src++;
+        		des--;
+        	}
+        }
+        return new String(schs);
+    }
 	
-	
+	/**
+	 * Problem 557. Reverse Words in a String III
+	 * Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
+	 * Example 1:
+	 * Input: "Let's take LeetCode contest"
+	 * Output: "s'teL ekat edoCteeL tsetnoc"
+	 */
+	 public String reverseWords(String s) {
+		if(s==null || s.length()==1)
+			 return s;
+		char[] chars = s.toCharArray();
+		int start = 0;
+		for(int i=0; i<chars.length; i++){
+			if( i+1==chars.length || chars[i+1]==' ' ){
+				int end = i;
+				while(end > start){
+					char tmp = chars[start];
+					chars[start] = chars[end];
+					chars[end] = tmp;
+					start++;
+					end--;
+				}
+				start = i+2;
+			}
+		}
+		return new String(chars);
+	 }
+
+	 /**
+	  * Problem 151. Reverse Words in a String
+	  * Given an input string, reverse the string word by word.
+	  * For example,
+	  * Given s = "the sky is blue",
+	  * return "blue is sky the".
+	  */
+	 public String reverseWordsII(String s) {
+		 String[] strs = s.split("\\s+");
+		 StringBuilder sb = new StringBuilder();
+		 for(int i=strs.length-1; i>=0; i--)
+			 sb.append(strs[i]+" ");
+		 return sb.toString().trim();
+	 }
+	 
+	 /**
+	  * Problem 395. Longest Substring with At Least K Repeating Characters
+	  * Find the length of the longest substring T of a given string 
+	  * (consists of lowercase letters only) such that every character
+	  *  in T appears no less than k times.
+	  *  Example 1:
+	  *  Input: s = "aaabb", k = 3
+	  *  Output: 3
+	  *  The longest substring is "aaa", as 'a' is repeated 3 times.
+	  *  Example 2:
+	  *  Input: s = "ababbc", k = 2
+	  *  Output: 5
+	  *  The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.
+	  */
+	 public int longestSubstring(String s, int k) {
+		 
+	 }
 }
