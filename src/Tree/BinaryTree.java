@@ -96,7 +96,6 @@ public class BinaryTree <T extends Comparable <T>> {
 				System.out.print(curr.val + " ");
 				curr = curr.right;
 			}
-			
 		}
 	}
 	
