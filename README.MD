@@ -1,5 +1,5 @@
 # General algorithms implemented by Java.
-code by ccding. 2016.10//
+code by ccding. 2016.10 /br
 
 [TOC]
 
@@ -25,21 +25,16 @@ code by ccding. 2016.10//
 
 ## [Leetcode Problems](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode)
 
-- [Problem004_MedianTwoSortedArr](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem004_MedianTwoSortedArr.java)
-
+- [Problem004_MedianTwoSortedArr](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem004_MedianTwoSortedArr.java)/br
 There are two sorted arrays nums1 and nums2 of size m and n respectively.
-
 Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n))
 
-- [Problem005_LongestPalindromicSubstring](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem005_LongestPalindromicSubstring.java)
-
+- [Problem005_LongestPalindromicSubstring](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem005_LongestPalindromicSubstring.java)/br
 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
-
 Example:
 Input: "babad"
 Output: "bab"
 Note: "aba" is also a valid answer.
-
 Example:
 Input: "cbbd"
 Output: "bb"
