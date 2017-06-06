@@ -25,7 +25,6 @@ code by ccding. 2016.10 /br
 
 ## [Leetcode Problems](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode)
 
-<<<<<<< HEAD
 - [Problem004_MedianTwoSortedArr](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem004_MedianTwoSortedArr.java)
 
 There are two sorted arrays nums1 and nums2 of size m and n respectively.
@@ -35,14 +34,6 @@ Find the median of the two sorted arrays. The overall run time complexity should
 
 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
 
-=======
-- [Problem004_MedianTwoSortedArr](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem004_MedianTwoSortedArr.java)/br
-There are two sorted arrays nums1 and nums2 of size m and n respectively.
-Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n))
-
-- [Problem005_LongestPalindromicSubstring](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem005_LongestPalindromicSubstring.java)/br
-Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
->>>>>>> 5c50efea5dd2ebc97b50799133f6490c531b7c24
 Example:
 Input: "babad"
 Output: "bab"
@@ -51,7 +42,6 @@ Example:
 Input: "cbbd"
 Output: "bb"
 
-<<<<<<< HEAD
 - [Problem006_ZigZagConversion](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem006_ZigZagConversion.java)
 
 The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
@@ -75,30 +65,6 @@ The input is assumed to be a 32-bit signed integer. Your function should return 
 
 Implement atoi to convert a string to an integer.
 Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.
-
-
-=======
-- [Problem006_ZigZagConversion](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem006_ZigZagConversion.java)\\
-The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)\\
-P   A   H   N\\
-A P L S I I G\\
-Y   I   R\\
-And then read line by line: "PAHNAPLSIIGYIR"\\
-Write the code that will take a string and make this conversion given a number of rows:\\
-string convert(string text, int nRows);\\
-convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".\\
-
-- [Problem007_ReverseInteger](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem007_ReverseInteger.java)\\
-Reverse digits of an integer.\\
-Example1: x = 123, return 321\\
-Example2: x = -123, return -321\\
-The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.\\
-
-- [Problem008_StringToInteger](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem008_StringToInteger.java)\\
-Implement atoi to convert a string to an integer.\\
-Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.\\
->>>>>>> 5c50efea5dd2ebc97b50799133f6490c531b7c24
-Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.
 
 - [Problem009_PalindromeNumber](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem009_PalindromeNumber.java)
 
