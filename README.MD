@@ -1,7 +1,9 @@
-#General algorithms implemented by Java.
+# General algorithms implemented by Java.
+code by ccding. 2016.10//
+
 [TOC]
 
-## Data Structure
+## [Data Structure]()
 ## Design Patterns
 ## Leetcode Problems
 ## Newcoder Problems
