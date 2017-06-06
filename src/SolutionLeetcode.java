@@ -350,10 +350,10 @@ public class SolutionLeetcode {
 		 ListNode l = res;
 		 while(l1!=null && l2!=null){
 			 if(l1.val <= l2.val){
-				 l.next = new ListNode(l1.val);
+				 l.next = l1;
 				 l1 = l1.next;
 			 }else{
-				 l.next = new ListNode(l2.val);
+				 l.next = l2;
 				 l2 = l2.next;
 			 }
 			 l = l.next;
@@ -571,16 +571,112 @@ public class SolutionLeetcode {
 			  }
 		  }
 	  }
-	 
+	  
 	  /**
-//	  * Problem 76. Minimum Window Substring
-//	  * Given a string S and a string T, find the minimum window in S which will
-//	  *  contain all the characters in T in complexity O(n).
-//	  *  For example,
-//	  *  S = "ADOBECODEBANC"  T = "ABC"
-//	  *  Minimum window is "BANC".
-//	  */
-//	 public String minWindow(String s, String t){
-//		 
-//	 }
+	   * Problem 142. Linked List Cycle II
+	   * Given a linked list, return the node where the cycle begins. 
+	   * If there is no cycle, return null.
+	   */
+	  public ListNode detectCycle(ListNode head) {
+		  if(head==null || head.next==null)
+			  return null;
+		  ListNode f = head;
+		  ListNode s = head;
+		  while(f!=null && f.next!=null){
+			  s = s.next; 
+			  f = f.next.next;
+			  if(s == f){
+				  ListNode sc = head;
+				  while(s != sc){
+					  s = s.next;
+					  sc = sc.next;
+				  }
+				  return s;
+			  }
+		  }
+		  return null;
+	  }
+
+	  /**
+	   * Problem 61. Rotate List
+	   * Given a list, rotate the list to the right by k places, where k is non-negative.
+	   * For example:
+	   * Given 1->2->3->4->5->NULL and k = 2,
+	   * return 4->5->1->2->3->NULL.
+	   */
+	  public ListNode rotateRight(ListNode head, int k) {
+		  if(head==null || head.next==null || k==0)
+			  return head;
+		  int len = 1;
+		  ListNode s = head;
+		  while(s.next != null){
+			  s = s.next;
+			  len++;
+		  }
+		  s.next = head;
+		  k = k%len;
+		  s = head;
+		  for(int i=1; i<len-k; i++){
+			  s = s.next;
+		  }
+		  ListNode res = s.next;
+		  s.next = null;
+		  return res;
+	  }
+
+	  /**
+	   * Problem 206. Reverse Linked List
+	   * Reverse a singly linked list.
+	   */
+	  public ListNode reverseList(ListNode head) {
+		  if(head==null || head.next==null)
+			  return head;
+		  ListNode curr = head.next;
+		  ListNode tail = head.next;
+		  ListNode pre = head;
+		  head.next = null;
+		  while(curr != null){
+			  tail = curr.next;
+			  curr.next = pre;
+			  pre = curr;
+			  curr = tail;
+		  }
+		  return pre;
+	  }
+
+	  /**
+	   * Problem 92. Reverse Linked List II
+	   * Reverse a linked list from position m to n. Do it in-place and in one-pass.
+	   * For example:
+	   * Given 1->2->3->4->5->NULL, m = 2 and n = 4,
+	   * return 1->4->3->2->5->NULL.
+	   * Note 1 ≤ m ≤ n ≤ length of list.
+	   */
+	  public ListNode reverseBetween(ListNode head, int m, int n) {
+		  if(head==null || head.next== null || m==n)
+			  return head;
+		  ListNode mPre = null;
+		  ListNode mNode = head;
+		  for(int i=0; i<m; i++){
+			  mPre = mNode;
+			  mNode = mNode.next;
+		  }
+		  
+		  ListNode pre = mNode;
+		  ListNode curr = mNode.next;
+		  ListNode tail = mNode.next;
+		  for(int i=n-m; i>0; i--){
+			  tail = curr.next;
+			  curr.next = pre;
+			  pre = curr;
+			  curr = tail;
+		  }
+		  mNode.next = curr;
+		  mPre.next = tail;
+		  return head;
+	  }
+
+
+
+
 }

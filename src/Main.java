@@ -1,4 +1,3 @@
-import newcoder.ReorderList;
 import utils.ListNode;
 
 public class Main {
@@ -14,7 +13,7 @@ public class Main {
 //		node2.next = new ListNode(10);
 //		ListNode[] lists = new ListNode[]{null, node, null, node2};
 //		int nums[] = new int[]{2,2,2,0,2,2};
-		ReorderList.reorderList(node);
+		System.out.println(StringMatcher.KMP("absghhsgdj", "hhs"));
 	
 		
 	}
