@@ -13,7 +13,7 @@ package leetcode;
  * @author ccding
  *
  */
-public class Problem541_ReverseWordsInStringIII {
+public class Problem541_ReverseWordsInStringII {
 	public String reverseStr(String s, int k) {
         if(s==null || s.length()==1)
         	return s;
