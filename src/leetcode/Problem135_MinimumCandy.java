@@ -1,4 +1,4 @@
-package newcoder;
+package leetcode;
 
 /**
  * There are N children standing in a line. Each child is assigned a rating value.
@@ -9,7 +9,7 @@ package newcoder;
  * @author ccding
  *
  */
-public class MinimumCandy {
+public class Problem135_MinimumCandy {
 	public int candy(int[] ratings) {
 		if(ratings.length==0)
 			return 0;

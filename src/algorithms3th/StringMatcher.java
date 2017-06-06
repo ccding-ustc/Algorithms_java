@@ -1,3 +1,4 @@
+package algorithms3th;
 
 /**
  * String matcher methods

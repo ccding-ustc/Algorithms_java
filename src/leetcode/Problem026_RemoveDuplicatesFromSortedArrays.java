@@ -14,7 +14,7 @@ package leetcode;
  * @date: 2016年9月28日 下午3:18:29
  *
  */
-public class RemoveDuplicatesFromSortedArrays {
+public class Problem026_RemoveDuplicatesFromSortedArrays {
 	public static int removeDuplicates(int[] nums) {
 		if(nums.length == 0 || nums.length==1)
 			return nums.length;

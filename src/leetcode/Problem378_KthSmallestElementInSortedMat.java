@@ -18,7 +18,7 @@ package leetcode;
  * @date: 2017年2月15日 下午7:12:35
  *
  */
-public class KthSmallestElementInSortedMat {
+public class Problem378_KthSmallestElementInSortedMat {
 	 public static int kthSmallest(int[][] matrix, int k) {
 		 int n = matrix.length;
 		 int minValue = matrix[0][0];

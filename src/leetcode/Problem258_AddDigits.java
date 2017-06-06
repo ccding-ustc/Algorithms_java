@@ -1,6 +1,6 @@
 package leetcode;
 
-public class AddDigits_leetcode {
+public class Problem258_AddDigits {
 	public static int addDigits(int num){
 		 int digit=0;
 	        while(num != 0){

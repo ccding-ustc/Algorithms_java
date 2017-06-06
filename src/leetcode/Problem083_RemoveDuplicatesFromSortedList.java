@@ -6,7 +6,7 @@ import utils.ListNode;
  * 
  * @ClassName: DeleteDuplicates
  *
- * @Description: TODO Given a sorted linked list, delete all duplicates 
+ * @Description: Given a sorted linked list, delete all duplicates 
  * such that each element appear only once.
  * For example,
  * Given 1->1->2, return 1->2.
@@ -16,7 +16,7 @@ import utils.ListNode;
  * @date: 2016年9月28日 上午9:46:12
  *
  */
-public class DeleteDuplicates {
+public class Problem083_RemoveDuplicatesFromSortedList {
 	public static ListNode deleteDuplicates(ListNode head){
 		if(head == null || head.next == null)
 			return head;

@@ -11,7 +11,7 @@ import utils.ListNode;
  * @date: 2016年9月28日 上午9:12:45
  */
 
-public class InsertionSortList {
+public class Problem147_InsertionSortList {
 	public ListNode insertionSortList(ListNode head) {
 		if(head == null || head.next == null)
 			return head;

@@ -1,4 +1,4 @@
-package newcoder;
+package leetcode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +13,7 @@ import utils.RandomListNode;
  * @author ccding
  *
  */
-public class CopyRandomList {
+public class Problem138_CopyRandomList {
 	public RandomListNode copyRandomList(RandomListNode head){
 		RandomListNode curr = head;
 		Map<RandomListNode, RandomListNode> m = new HashMap<>();

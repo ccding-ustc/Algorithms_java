@@ -14,7 +14,7 @@ package leetcode;
  * @date: 2016年9月29日 下午9:43:20
  *
  */
-public class MergeSortedArrays {
+public class Problem088_MergeSortedArrays {
 	public static void merge(int[] nums1, int m, int[] nums2, int n) {
 		int idx1 = m-1;
 		int idx2 = n-1;

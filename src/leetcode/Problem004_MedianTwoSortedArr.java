@@ -1,7 +1,7 @@
 package leetcode;
 import java.util.Arrays;
 
-public class MedianTwoSortedArr_leetcode {
+public class Problem004_MedianTwoSortedArr {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
     	int m = nums1.length;
     	int n = nums2.length;

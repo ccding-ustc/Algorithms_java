@@ -14,20 +14,20 @@ import java.util.Arrays;
  * @date: 2016年9月28日 上午10:47:16
  *
  */
-public class SortColors {
-	   public static void sortColors(int[] nums){
-			int[] counts = {0, 0, 0};
-			int[] numsDummy = Arrays.copyOf(nums, nums.length);
-			
-			for(int i = 0; i<nums.length; i++){
-				counts[nums[i]]++;
-			}
-			for(int i = 1; i<counts.length; i++){
-				counts[i] += counts[i-1];
-			}
-			for(int i=nums.length-1; i>=0; i--){
-				nums[counts[numsDummy[i]]-1] = numsDummy[i];
-				counts[numsDummy[i]]--;
-			}
+public class Problem075_SortColors {
+	public static void sortColors(int[] nums){
+		int[] counts = {0, 0, 0};
+		int[] numsDummy = Arrays.copyOf(nums, nums.length);
+		
+		for(int i = 0; i<nums.length; i++){
+			counts[nums[i]]++;
 		}
+		for(int i = 1; i<counts.length; i++){
+			counts[i] += counts[i-1];
+		}
+		for(int i=nums.length-1; i>=0; i--){
+			nums[counts[numsDummy[i]]-1] = numsDummy[i];
+			counts[numsDummy[i]]--;
+		}
+	}
 }

@@ -12,7 +12,7 @@ package leetcode;
  * @date: 2017年2月14日 上午8:50:36
  *
  */
-public class SortCharactersByFrequency {
+public class Problem451_SortCharactersByFrequency {
 	public static String frequencySort(String s){
 		char[] newChars = new char[256];
 		int[] frequencies = new int[256];

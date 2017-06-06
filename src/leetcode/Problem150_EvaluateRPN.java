@@ -1,8 +1,8 @@
-package newcoder;
+package leetcode;
 
 import java.util.Stack;
 
-public class RPN {
+public class Problem150_EvaluateRPN {
     public static int evalRPN(String[] tokens) {
         Stack<Integer> s = new Stack<>();
         for(String str: tokens){

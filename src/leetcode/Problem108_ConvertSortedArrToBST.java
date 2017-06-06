@@ -13,7 +13,7 @@ import utils.TreeNode;
  * @date: 2017年2月15日 下午5:59:48
  *
  */
-public class ConvertSortedArrToBST {
+public class Problem108_ConvertSortedArrToBST {
 	public static TreeNode sortedArrayToBST(int[] nums){
 		return getBST(nums, 0, nums.length-1);
 	}

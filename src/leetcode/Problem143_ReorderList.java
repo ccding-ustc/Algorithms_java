@@ -1,4 +1,4 @@
-package newcoder;
+package leetcode;
 
 import java.util.Stack;
 
@@ -13,7 +13,7 @@ import utils.ListNode;
  * @author ccding
  *
  */
-public class ReorderList {
+public class Problem143_ReorderList {
 	 public static void reorderList(ListNode head) {
 		 if(head == null || head.next == null || head.next.next == null)
 			 return;
