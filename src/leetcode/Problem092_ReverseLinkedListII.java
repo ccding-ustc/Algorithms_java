@@ -12,12 +12,12 @@ import utils.ListNode;
  *
  */
 public class Problem092_ReverseLinkedListII {
-	public ListNode reverseBetween(ListNode head, int m, int n) {
+	public static ListNode reverseBetween(ListNode head, int m, int n) {
 		  if(head==null || head.next== null || m==n)
 			  return head;
 		  ListNode mPre = null;
 		  ListNode mNode = head;
-		  for(int i=0; i<m; i++){
+		  for(int i=1; i<m; i++){
 			  mPre = mNode;
 			  mNode = mNode.next;
 		  }
@@ -25,14 +25,21 @@ public class Problem092_ReverseLinkedListII {
 		  ListNode pre = mNode;
 		  ListNode curr = mNode.next;
 		  ListNode tail = mNode.next;
-		  for(int i=n-m; i>0; i--){
+		  mNode.next = null;
+		  for(int i=0; i<n-m && curr!=null; i++){
 			  tail = curr.next;
 			  curr.next = pre;
 			  pre = curr;
 			  curr = tail;
 		  }
-		  mNode.next = curr;
-		  mPre.next = tail;
-//		  return head;
+		  if(curr != null){
+			  mNode.next = curr;
+		  }
+		  if(mPre != null){
+			  mPre.next = pre;
+			  return head;
+		  }else{
+		      return pre;
+		  }
 	  }
 }

@@ -1,8 +1,49 @@
 package leetcode;
+
 import java.util.Arrays;
 
+/**
+ * There are two sorted arrays nums1 and nums2 of size m and n respectively.
+ * Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+ * Example 1:
+ * nums1 = [1, 3]
+ * nums2 = [2]
+ * 
+ * The median is 2.0
+ * Example 2:
+ * nums1 = [1, 2]
+ * nums2 = [3, 4
+ * The median is (2 + 3)/2 = 2.5
+ * @author ccding
+ *
+ */
 public class Problem004_MedianTwoSortedArr {
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+	// time complexity O(m+n)
+    public double findMedianSortedArrays(int[] A, int[] B) {
+    	int n = A.length;
+    	int m = B.length;
+        return (((n+m)&1)==1)?findk(A,B,n,m,(n+m+1)>>1):(findk(A,B,n,m,(n+m)>>1)+findk(A,B,n,m,((n+m)>>1)+1))*0.5;
+    }
+    public double findk(int a[],int b[],int lena,int lenb,int k){
+        int i=0,j=0;
+        for(;(i<lena&&j<lenb);){
+            --k;
+            if(a[i]<b[j]){
+                if(k==0){
+                    return (double)a[i];
+                }
+                ++i;
+            }else if(k==0){
+                return (double)b[j];
+            }else{
+                ++j;
+            }
+        }
+        return (i>=lena)?(double)b[j+k-1]:(double)a[i+k-1];
+    }
+    
+    // time complexity O(log(m+n))
+    public double findMedianSortedArraysII(int[] nums1, int[] nums2) {
     	int m = nums1.length;
     	int n = nums2.length;
         if((m+n)%2 == 0){

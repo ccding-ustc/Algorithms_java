@@ -1,6 +1,14 @@
 # leetcode problems
 code by ccding. 2017.01.
 
+- [Problem002_AddTwoNumbers](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem002_AddTwoNumbers.java)
+
+You are given two non-empty linked lists representing two non-negative integers. 
+The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+
 - [Problem004_MedianTwoSortedArr](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem004_MedianTwoSortedArr.java)
 
 There are two sorted arrays nums1 and nums2 of size m and n respectively.
@@ -168,6 +176,15 @@ Given a sorted linked list, delete all duplicates such that each element appear 
 For example,
 Given 1->1->2, return 1->2.
 Given 1->1->2->3->3, return 1->2->3.
+
+- [Problem086_PartitionList](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem086_PratitionList.java)
+Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
+
+You should preserve the original relative order of the nodes in each of the two partitions.
+
+For example,
+Given 1->4->3->2->5->2 and x = 3,
+return 1->2->2->4->3->5.
 
 - [Problem088_MergeSortedArrays](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem088_MergeSortedArrays.java)
 Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
