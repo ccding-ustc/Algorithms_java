@@ -324,6 +324,12 @@ You may assume that each input would have exactly one solution and you may not u
 Input: numbers={2, 7, 11, 15}, target=9
 Output: index1=1, index2=2
 
+- [Problem190_ReverseBits](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem190_ReverseBits.java)
+
+Reverse bits of a given 32 bits unsigned integer.
+
+For example, given input 43261596 (represented in binary as 00000010100101000001111010011100), return 964176192 (represented in binary as 00111001011110000010100101000000).
+
 - [Problem205_IsomorphicStrings](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem205_IsomorphicStrings.java)
 
 Given two strings s and t, determine if they are isomorphic.
