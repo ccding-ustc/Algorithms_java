@@ -14,6 +14,23 @@ import utils.ListNode;
  */
 public class Problem002_AddTwoNumbers {
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		
+		ListNode res = new ListNode(0);
+		ListNode curr = res;
+		int increase = 0;
+		while(l1!=null || l2!=null || increase != 0){
+			if(l1!=null){
+				increase += l1.val;
+				l1 = l1.next;
+			}
+			if(l2!=null){
+				increase += l2.val;
+				l2 = l2.next;
+			}
+			curr.next = new ListNode(increase%10);
+			increase /= 10;
+			curr = curr.next;
+			
+		}
+		return res.next;
 	}
 }

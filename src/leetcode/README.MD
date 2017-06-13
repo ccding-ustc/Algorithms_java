@@ -72,6 +72,19 @@ Merge two sorted linked lists and return it as a new list. The new list should b
 
 Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 
+- [Problem025_ReverseNodesInKGroups](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem025_ReverseNodesInKGroups.java)
+
+Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
+k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.
+You may not alter the values in the nodes, only nodes itself may be changed.
+Only constant memory is allowed.
+
+For example,
+Given this linked list: 1->2->3->4->5
+
+For k = 2, you should return: 2->1->4->3->5
+For k = 3, you should return: 3->2->1->4->5
+
 - [Problem026_RemoveDuplicatesFromSortedArrays](https://github.com/ccding-ustc/Algorithms_java/blob/master/src/leetcode/Problem026_RemoveDuplicatesFromSortedArrays.java)
 
 Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
