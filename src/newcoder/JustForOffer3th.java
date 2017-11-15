@@ -1,6 +1,6 @@
 package newcoder;
 
-import java.util.Stack;
+import java.util.*;
 
 import utils.ListNode;
 
@@ -143,5 +143,78 @@ public class JustForOffer3th {
     	}
     	return q;
     }
+    
+    /**
+     * 打印全排列 包含重复字符
+     * @param str
+     * @return
+     */
+    public ArrayList<String> Permutation(String str) {
+        ArrayList<String> res = new ArrayList<>();
+        permutation(str.toCharArray(), 0, res);
+        Collections.sort(res);
+        return res;
+     }
+     private void permutation(char[] cStrs, int start, ArrayList<String> res){
+ 		if(start == cStrs.length-1){
+ 			res.add(new String(cStrs));
+         }
+         for(int i=start; i<cStrs.length; i++){
+             if(isSwap(cStrs, start, i)){
+                 swap(cStrs, i, start);
+                 permutation(cStrs, start+1, res);
+                 swap(cStrs, start, i);
+             }
+         }
+     }
+     private boolean isSwap(char[] cStrs, int start, int end){
+         for(int i = start; i<end; i++){
+             if(cStrs[i] == cStrs[end])
+                 return false;
+         }
+         return true;
+     }
+     private void swap(char[] s, int src, int des){
+         char tmp = s[src];
+         s[src] = s[des];
+         s[des] = tmp;
+     }
+     
+     /**
+      * 旋转数组中的最小数字
+      * @param array
+      * @return
+      */
+     public int findMin(int[] nums) {
+         if(nums.length==0)
+             return 0;
+     	int s = 0;
+         int t = nums.length-1;
+         while(s<=t){
+             if(nums[s] < nums[t])
+             	return nums[s];
+         	if(t-s<=1)
+             	return nums[t];
+             int mid = s + ((t-s)>>1);
+             if(nums[mid] < nums[t])
+                 t = mid;
+             else if(nums[mid] > nums[s])
+                 s = mid+1;
+             else
+ 				return getMin(nums, s, mid, t);
+         }
+         return 0;
+     }
+     public int getMin(int[] array, int s, int mid, int t){
+         int min1 = Integer.MAX_VALUE;
+         int min2 = Integer.MAX_VALUE;
+         for(int i=s;i<=mid;i++)
+             if(array[i]<min1)
+                 min1 = array[i];
+         for(int i=mid+1; i<=t; i++)
+             if(array[i]<min2)
+                 min2 = array[i];
+         return Math.min(min1, min2);
+     }
     
 }
